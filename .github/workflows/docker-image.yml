@@ -15,4 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag aetherdock:$(date +%s)
+      run: docker compose build
+    - name: Run tests
+      run: docker compose run --rm app uv run pytest -v
+    
